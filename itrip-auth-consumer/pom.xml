@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                                http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>itrip-commons</artifactId>
+	<artifactId>itrip-auth-consumer</artifactId>
 	<packaging>jar</packaging>
 
 	<parent>
@@ -19,15 +21,11 @@
 	</properties>
 
 	<dependencies>
-		<!-- 配置eureka client依赖关系 -->
+		<!-- 配置Commons依赖关系 -->
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>
-		<!-- 配置远程调用openFeign依赖关系 -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-openfeign</artifactId>
+			<groupId>cn.ekgc.itrip</groupId>
+			<artifactId>itrip-commons</artifactId>
+			<version>${parent.version}</version>
 		</dependency>
 
 		<dependency>
