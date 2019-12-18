@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserTransportImpl implements UserTransport {
 	@Autowired
 	private UserService userService;
+
 	/**
 	 * <b>通过用户用户账号获得对应的用户</b>
 	 * @param userCode
@@ -37,5 +38,38 @@ public class UserTransportImpl implements UserTransport {
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
 	public Boolean registryUserByEmail(@RequestBody User user) throws Exception {
 		return userService.registryUserByEmail(user);
+	}
+	/**
+	 * <b>激活已注册用户账号</b>
+	 * @param userCode
+	 * @return Boolean
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/activation", method = RequestMethod.POST)
+	public Boolean activationUser(@RequestParam String userCode) throws Exception {
+		return userService.updateUserByUserCode(userCode);
+	}
+
+	/**
+	 *<b>根据用户名和密码登录用户</b>
+	 * @param userCode
+	 * @param userPassword
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public User loginUser(@RequestParam String userCode, @RequestParam String userPassword) throws Exception {
+		return userService.loginUser(userCode, userPassword);
+	}
+
+	/**
+	 * <b>使用手机号码注册新用户</b>
+	 * @param user
+	 * @return boolean
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/saveCellphoneUser", method = RequestMethod.POST)
+	public boolean registryUserByCellphone(@RequestBody User user) throws Exception {
+		return userService.registryUserByCellphone(user);
 	}
 }

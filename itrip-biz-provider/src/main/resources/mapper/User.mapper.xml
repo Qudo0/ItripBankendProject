@@ -15,6 +15,8 @@
 		<where>
 			<trim suffixOverrides="and">
 				<if test="userCode != null">iu.userCode=#{userCode} and</if>
+				<if test="userPassword != null">iu.userPassword=#{userPassword} and</if>
+				<if test="activated != null">iu.activated=#{activated} and</if>
 			</trim>
 		</where>
 	</select>
@@ -23,6 +25,14 @@
 		insert into itrip_user(userCode, userPassword, userName)
 		values (#{userCode},#{userPassword},#{userName})
 	</insert>
+
+	<update id="updateUserByUser" parameterType="User">
+		update itrip_user set
+			<if test="activated != null">activated = #{activated}</if>
+		where
+			userCode = #{userCode}
+	</update>
+
 	<resultMap id="userMap" type="User">
 		<id property="id" javaType="java.lang.Long" column="id"/>
 		<result property="userCode" javaType="java.lang.String" column="userCode"/>

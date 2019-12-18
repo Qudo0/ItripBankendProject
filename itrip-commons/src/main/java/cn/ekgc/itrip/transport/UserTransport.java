@@ -33,4 +33,32 @@ public interface UserTransport {
 	 */
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
 	Boolean registryUserByEmail(@RequestBody User user) throws Exception;
+
+	/**
+	 * <b>激活已注册用户账号</b>
+	 * @param userCode
+	 * @return Boolean
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/activation", method = RequestMethod.POST)
+	Boolean activationUser(@RequestParam String userCode) throws Exception;
+
+	/**
+	 *<b>根据用户名和密码登录用户</b>
+	 * @param userCode
+	 * @param userPassword
+	 * @return User
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	User loginUser(@RequestParam String userCode, @RequestParam String userPassword) throws Exception;
+
+	/**
+	 * <b>使用手机号码注册新用户</b>
+	 * @param user
+	 * @return boolean
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/saveCellphoneUser", method = RequestMethod.POST)
+	boolean registryUserByCellphone(@RequestBody User user) throws Exception;
 }

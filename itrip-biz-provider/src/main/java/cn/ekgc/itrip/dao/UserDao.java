@@ -27,4 +27,11 @@ public interface UserDao {
 	 * @throws Exception
 	 */
 	void addUser(User user) throws Exception;
+
+	/**
+	 * <b>更改用户信息</b>
+	 * @param user
+	 * @throws Exception
+	 */
+	void updateUserByUser(User user) throws Exception;
 }
